@@ -1,0 +1,44 @@
+see \cite{towards_jetography}, \cite{Impact_PDF}
+
+
+
+
+JES: JES_CMS_2017
+
+
+DESY MEASUREMENT: ANS_DESY
+
+Combined SMEFT fit: Combined_SMEFT_Fit
+
+
+dijet angular dist: Dijet_ang
+
+
+diff_jet_crosssec_CMS_2013
+
+ATLAS_jetxsec_7 (this also has angular)
+
+Hard_scattering_theory: hard scattering for LHC theor
+
+Kokkas2015 : Measurements of jet-related observables at the LHC
+
+Ganguly2013: Jet Cross-Section Measurements In CMS
+
+Harry_87: Harry 87 lol
+
+Gao2011 :Next-to-leading QCD effect to the quark compositeness search at the LHC (THEORY)
+Gao2013 : summarized
+
+Cousins2020 : What is the likelihood function, and how is it used in particle physics?},
+
+Abdallah2020 :Reinterpretation of LHC results for new physics: Status and recommendations after run 2
+
+Cranmer2021: Publishing statistical models: Getting the most out of particle physics experiments
+
+Another_PDF_impact
+
+Kogler2018 : jet substracture
+
+Cranmer2021 : The LFI paper mining gold
+
+HeraFitter, xFitter2

@@ -1,0 +1,110 @@
+\chapter{Statistical Model and Publishing the Likelihood}
+\label{stats_likelihood}
+Why publish the likelihood, etc.
+
+
+
+
+\section{Statistical Model}
+Supose that a set of $N_c$ independent channels for events are defined, in my case the channels could be distinct physics channels (processes leading to jets) or bins of a histogram. A certain number of events $n_i$ is found in channel $i$ and for every event $j$ in that channel one measure a vector of values $x_{ij}$. Suppose the $n_i$ counts can be modeled as independent and Poisson-distributted with mean counts $\nu_i (\mu, \theta)$ (typically $\nu_i (\mu=\sigma, \theta=\{ \mathcal{L}, \text{BR}, \varepsilon \})  \sigma \ \approx \varepsilon \ \text{BR} \ \mathcal{L}$). The mean counts of various physics processes (that do not interfere quantum-mechanically), indexed by $k$, will be
+\begin{equation}
+    \nu_{i}(\sigma, \varepsilon, \text{BR}, \mathcal{L})=\sum_{k} \nu_{i k}(\sigma, \varepsilon, \text{BR}, \mathcal{L})
+\end{equation}
+
+Each process $k$ is associated with a probability $p_{ik} (x| \sigma, \varepsilon, \text{BR}, \mathcal{L})$ to produce outcomes $x$ for channel $i$. The probability $p_i (x_{ij}| \sigma, \varepsilon, \text{BR}, \mathcal{L})$ to measure $x_{ij}$ in channel $i$ event $j$ is therefore the weighted sum
+\begin{equation}
+    p_{i}\left(x_{i j} \mid \sigma, \varepsilon, \text{BR}, \mathcal{L}\right)=\sum_{k} \frac{\nu_{i k}(\sigma, \varepsilon, \text{BR}, \mathcal{L})}{\nu_{i}(\sigma, \varepsilon, \text{BR}, \mathcal{L})} p_{i k}\left(x_{i j} \mid \sigma, \varepsilon, \text{BR}, \mathcal{L}\right)
+\end{equation}
+
+This corresponds to what we usually refer to as a stacked histogram, which is a statistical mixture model. Given our auxiliar data, which could be estimates of the relevant parameters $\{ \hat{\sigma}, \hat{\varepsilon}, \hat{\text{BR}}, \hat{\mathcal{L}} \}$ with pdf $p(\hat{\sigma}, \hat{\varepsilon}, \hat{\text{BR}}, \hat{\mathcal{L}} \mid \varepsilon, \text{BR}, \mathcal{L} )$, whose form we can leave open, the full statistical model can be written as
+
+\begin{equation}
+    p(n, x, \hat{\varepsilon}, \hat{\text{BR}}, \hat{\mathcal{L}} \mid \sigma, \varepsilon, \text{BR}, \mathcal{L})=\prod_{i=1}^{N_{c}}\left[\operatorname{Pois}\left(n_{i} \mid \nu_{i}(\sigma, \varepsilon, \text{BR}, \mathcal{L})\right) \prod_{j=1}^{n_{i}} p_{i}\left(x_{i j} \mid \sigma, \varepsilon, \text{BR}, \mathcal{L}\right)\right]
+    \label{Poisson_model}
+\end{equation}
+And when the observable data $\{ n, x, \hat{\varepsilon}, \hat{\text{BR}}, \hat{\mathcal{L}} \} $ are entered into the statistical model, it becomes the likelihood, $p(n, x, \hat{\varepsilon}, \hat{\text{BR}}, \hat{\mathcal{L}} \mid \sigma, \varepsilon, \text{BR}, \mathcal{L}) = L(\sigma, \varepsilon, \text{BR}, \mathcal{L} )$.
+\footnote{From here one can eliminate the nuissance parameters $\theta$ by computing the profile likelihood $L_{\mathrm{p}}(\sigma)=L(\sigma, \hat{\hat{\theta}}(\sigma))$, where $\hat{\hat{\theta}}(\sigma)$ are the values that maximize the likelihood for a given parameter of interest. One can also eliminate the nuissance parameters by marginalizing the posterior density to find the probability of the cross section, $p(\sigma \mid x)=\int p(\sigma, \theta \mid x) d \theta$ }
+
+\subsection{Multinomial Model}
+If we use a multinomial distribution rather than a product of Poisson distributions, as in \ref{Poisson_model}, then every term in the multinomial is the cross section in that bin divided by the total cross section, $\frac{\sigma_{\text{bin}}}{\sigma_{\text{total}}}$. Let us denote $L_{\text{P}}(\sigma, \varepsilon, \text{BR}, \mathcal{L} )$ as the Poisson likelihood
+\footnote{Then if our data is $x$ and our parameter of interest is $\sigma$, then $L_{\text{P}} = \frac{e^{\sigma} \sigma^x}{x !}$.
+}
+
+as described above (and is typically used), and $L_{\text{MN}}(\sigma, \varepsilon, \text{BR}, \mathcal{L} )$ to our suggested multinoial likelihood. These are related as
+
+\begin{equation}
+\begin{aligned}
+    L_\text{MN}  &= \frac{\prod_{\text{bins } i} L_{\text{P}, i}}{L_{\text{P}, total}}
+    = \frac{\prod_{\text{bins } i} \frac{e^{\sigma_i} \sigma_i^x}{x !}}{\frac{e^{\sigma_{\text{total}}} \sigma_{\text{total}}^{x_\text{total}}}{x_\text{total} !}}\\
+    &= x_\text{total} ! \cdot \prod_{\text {bins } i} \frac{1}{x_{i} !}\left(\frac{\sigma_{i}}{\sigma_{\text{total}}}\right)^{x}
+\end{aligned}
+\end{equation}
+
+This has a virtue that since $\sigma \ \approx \varepsilon \ \text{BR} \ \mathcal{L}$, $\frac{\sigma_i}{\sigma_\text{total}}$ would lead to a cancellation to many of the nuissance parameters that are included in the cross section such as the efficiency and integrated luminosity, since they take the same in each bin's cross section as in the total cross section. 
+
+
+
+
+
+
+
+
+
+\section{Why Publish the Likelihood?}
+
+The whole point of science is to be reproducible, replicable and verifiable ...  more on motivation why this must be done.
+
+Unfortunately, fully exploiting the information provided by the LHC on any measurement is often restrained by publicly available statistical information provided by the experimental collaboration. Such vital statistical uncertainties may sometimes even be difficult to access for collaboration members. This leads to global fits, such as PDF fits, having to use a $\chi^2$ as a figure of merit to compare theory with experiment. However, equation \ref{chi2_EFT} includes several downfalls. For example, \ref{chi2_EFT} is itself an approximation that the data is normally distributed around their true theoretical values, which may or may not be a good approximation. Further, usually only the full covariance matrix is provided, without details of its individual components. This means that one cannot identify the relevant sources of systematic errors causing the problem. it does not separate separate the different sources of error, and only the total systematic error is provided and information about correlation is missing. There are more problems associated with this approach (see file:///D:/PROSPECTUS/RELEVANT_PAPERS/Publishing_statistical_Moodels.pdf for a longer discussion on this).
+
+A much more complete, useful and general solution to this is to provide the statistical model of an analysis (or at least the likelihood function). The statistical model, given by the probability density $P(\textbf{observed} | \textbf{parameters})$, related the observed quantities $\textbf{observed}$ to the parameters $\textbf{parameters}$, describing the prediction in a \emph{model-independent way}. Then if a full mathematical description of the final likelihood is provided, one can change the \textbf{parameters} based on their predictions, to arrive at a new prediction for the same published observed quantities.
+
+
+
+
+
+
+If we publish the likelihood, the the full details of the observed data, e.g. $n_{dat}$ bin-by-bin correlated errors, both statistical and systematic, are provided, in which case the covariance matrix can be schemattically constructed as 
+\begin{equation}
+    \operatorname{cov}_{i j}=\delta_{i j} \sigma_{i}^{(\mathrm{stat})} \sigma_{j}^{(\mathrm{stat})}+\sum_{k=1}^{n_{\mathrm{sys}}} \sigma_{i}^{(\mathrm{sys})(k)} \sigma_{j}^{(\mathrm{sys})(k)}, \quad i, j=1, \ldots, n_{\text {dat }}
+    \label{cov_binbybin}
+\end{equation}
+
+
+And the likelihood itself will take care of all manner of non-Gaussian effects, and would avoid the problematic way fitting is done as mentioned earlier. We want to do a paradigm shift in particle physics: any group that would like to fit the experiment to theory, such as PDF groups, would simply use the the sum of the negative log-likelihoods
+\begin{equation}
+    - \sum_{i=1}^{n_{\text{Datasets}}} \log L_i(\theta_i)
+    \label{negative_log_like}
+\end{equation}
+where $n_{\text{Datasets}}$ is the number of datasets (or experiment) that is considered in the fit. Each experiment/dataset $i$ publishes a likelihood $L_i(\theta_i)$, and a group that wants to do a fit simply minimizes \ref{negative_log_like}, as opposed to a $\chi^2$ such as the one in equation \ref{chi2_EFT}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Folding - Not Unfolding!}
+Since the CMS detector, like any detector, is not perfect, the measured (detector-level) jet observables are not expected to be the same as that of the corresponding true (or particle-level) jets. Therefore, to account for the detector response and construct the mapping from the truth-level to the observed detector-level, nearly all HEP analysis "unfolds" the truth-level observables to the detector-level observables by means of a response matrix \footnote{Sometimes the response matrix is reffered to as the unfolding matrix }.
+
+In the Bayesian unfolding process, one defines the parameters $\vec{\mu}=\left(\mu_{1}, \ldots, \mu_{M}\right)$ to represent the expected number of entries in a bin (e.g. $\mu_2$ is the expected number of events in bin $i=2$) assuming perfect resolution. In reality, the detector has limited resolution and so an event with a true value of a variable in a bin might be measured (reconstructed) in a different one, so that $\vec{\nu}=\left(\nu_{1}, \ldots \nu_{N}\right)$ represents the number of events at the reconstructed or detector level. These parameters are related by 
+\begin{equation}
+    \vec{\nu}=R \vec{\mu}
+    \label{simple+_unfold}
+\end{equation}
+Or $\nu_i = \sum_{j-1}^{N} R_{ij} \mu_j$, where $R$ is an $N\times M$ the response matrix such that $R_{ij}$ represents the probability to measure $\nu$ in bin $i$ given that its true value $\mu$ was in bin $j$. Please not that \ref{simple+_unfold} is not strictly correct as it entails an approximation. The actual formula that is meant by such an expression is 
+\begin{equation}
+    \nu(x) = \int \underbrace{\mathbb{P(x|y)}}_{"R"} \mu(y) \ dy
+    \label{unfold_really}
+\end{equation}
+And even if we discritize this integral in equation \ref{unfold_really}, it's still that for every bin this holds; suppose that $i$ labels the bins in the space of observations, and $j$ labels the bins in the space of theory, then we have $\nu_i = \int \mathbb{P(x_i|y_j) \mu (y_j) dy_j}$. If we have the bins being very narrow,
+\footnote{By that I mean $\lim_{\Delta y \to 0} \nu_i = \int \mathbb{P(x_i|y_j) \mu (y_j) dy_j}$}
+then one could argue that the expression actually reaches the continuous expression in \ref{unfold_really}, or in a binned scenario, $\nu_i =  \mathbb{R(x_i|y_j) \mu (y_j)  \Delta y_j}$. However, if the bins are wide, then $R$ in equation \ref{simple+_unfold} actually depends on $\mu$.refore we argue that unfolding is misguided \footnote{For example, every implementation of this kind of unfolding injects some assumptions, and different assumptions that are injected in it leads to slightly different results. Also to our knowledge, nobody has proven that this effect is small.} and that we should avoid this unfolding completely!
+
+Instead of unfolding the spectrum, which leads to all the issues that are mentioned above, we will publish the likelihood, and then what is required is that we publish something with it that allows a theorist that allows a theorist to take their prediction and fold it.
+\footnote{Unfolding can be viewed as a mapping from observation space to theory space $\vec{\nu} \rightarrow \vec{\mu}$. In that sense, folding is a mapping from theory to observation, $\vec{mu} \rightarrow \vec{\nu}$.}

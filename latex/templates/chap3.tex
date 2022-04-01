@@ -1,0 +1,134 @@
+\chapter{Doing Jet Cross section for Run 3, Doing EFT Fit and Searching for Contact Interactions}
+
+\section{Doing the Jet Cross section for Run 3 and The Relevant Uncertainties}
+As mentioned earlier, I plan to measure the inclusive jet differential cross section for the preliminary Run 3 data. The LHC will start collecting data again for Run 3 in early 2023. As a PhD student, I will be among the first to  analyze Run 3 data in the context of an inclusive jet spectrum. In what follows I shall give a brief overview of what is measuting this cross section means from an experimental point of view, as well as all the uncertainties that are involved, and the importance of observables in this measurement.
+
+
+The inclusive jet cross section is $\sigma (pp \rightarrow \text{jet} + X)$, where $X$ signifies "anything". It is usually measured as a function of the jet transverse momentum, $p_T$,  and absolute rapidity $|y|$, hence a common measurement inclusive jet double-differential cross section is $\frac{d^2 \sigma}{dp_T dy}$.
+
+Once my samples for the preliminary Run 3 have been obtained, jets are isolated, reconstructed and corrected, ensured to pass criteria, etc., The measured inclusive double differential jet cross section looks like
+\begin{equation}
+    \frac{\mathrm{d}^{2} \sigma}{\mathrm{d} p_{T} \mathrm{~d}|y|}=\frac{1}{\epsilon \mathcal{L}} \frac{N_{\text{jets}}}{\Delta p_{T} \Delta|y|}
+\end{equation}
+Where $\Delta p_T$ and $\Delta |y|$ are the corresponding bins widths. The rapidity intervals are chosen, for example $\Delta |y|=0.5$, $N$ is the number of jets in the corresponding $p_T$ bin, $\mathcal{L}$ is the effective integrated luminosity of the data sample taking into account the trigger prescales, $\epsilon$ is the product of all the jet selection and trigger efficiencies. Similarly the inclusive double-differential cross section for the dijet mass is
+\begin{equation}
+    \frac{d^{2} \sigma}{d M_{j j} d|y|}=\frac{1}{\epsilon \mathcal{L}} \frac{N_{\text{jets}}}{\Delta M_{j j} \Delta|y|}
+\end{equation}
+Where $M_{jj}$ is the dijet invariant mass.
+%Previous measurements can be seen in figure.
+
+Any source of error that affects the $p_T$, $M_{jj}$ or any other observable that might affect the studied jet cross section must be discussed as a source of uncertainty. The experimental uncertainties that come into this measurement are numerous and complex, and could constitute a PhD thesis on their own.(eg see the CMS JES paper). In summary, the experimental uncertainties come from imperfect measurement of jet energy and jet $p_T$, imprecise simulation of jet energy resolution, imprecise knowledge of integrated luminosity. These inefficiencies are taken to be factorized into multiple uncertainties that are important to discuss.
+
+
+\section{The importance of Jet observables }
+All cross section measurements in hadron colliders can be described by the "master formula", such as equation \ref{QCD_master} discussed earlier. We can write a simpler version describint a scattering process where we have beams $A$ and $B$ coming in and final states $1\ 2\ 3\ ... \ n$ coming out. If we want to compute the cross section for some observable $\sigma_{\text{obs}}$ a simplified master formula, assuming the beams are massless, is
+\begin{equation}
+    \sigma_{o b s}=\frac{1}{E_{C M}^{2}} \sum_{n=1}^{\infty} \int d \phi_{n}\left|\mathcal{M}_{A B \rightarrow 12 \ldots n}\right|^{2} f_{o b s}\left(\phi_{n}\right)
+\end{equation}
+where $E_{\text{CM}}$ is the center of mass energy, the sum is over all the final states, and the integral is over the lorentz-invariant $n$-body phase space $\phi_n$ (i.e. over everywhere these particles go). $\left|\mathcal{M}_{A B \rightarrow 12 \ldots n}\right|$ is the hard scattering amplitude, and $f_{o b s}\left(\phi_{n}\right)$ is what we choose as an observable, which depends on the phase space or kinematics of the outgoing particles. The problem for jets is that the final states we measure, $1\ 2\ 3\ .... \ n$, are hadrons, but the scattering amplitudes that we can calculate, $\mathcal{M}$ are in terms of quarks and gluons. Therefore we have to somehow bridge the divide between the types of calculations whose scattering amplitudes we can calculate perturbatively, and the types of measurements that we can take which are composed of hadronic final states. The key to bridging this gap is the choice of observables in an appropriate "factorizable" way.
+
+
+
+
+
+
+
+
+\section{SMEFT Fit and Contact Interactions Search}
+The Standard Model Effective Field Theory (SMEFT) is a consistent effective field theory generalization of the SM built out $\mathrm{SU}_{\mathrm{c}}(3) \times \mathrm{SU}_{\mathrm{L}}(2) \times \mathrm{U}_{\mathrm{Y}}(1)$ higher dimensional operators, composed of SM fields. The SMEFT is defined as 
+\begin{equation}
+    \mathcal{L}_{S M E F T}=\mathcal{L}_{S M}+\mathcal{L}^{(5)}+\mathcal{L}^{(6)}+\mathcal{L}^{(7)}+\ldots
+\end{equation}
+Where 
+\begin{equation}
+    \mathcal{L}^{(d)}=\sum_{i=1}^{n_{d}} \frac{C_{i}^{(d)}}{\Lambda^{d-4}} Q_{i}^{(d)} \quad \text { for } d>4
+\end{equation}
+Where $Q_{i}^{(d)}$ are the operators, which are suppressed by $d-4$ powers of the cutoff scale $\Lambda$ and the $C_{i}^{(d)}$ are the Wilson coefficients. See e.g. https://arxiv.org/pdf/1706.08945.pdf for a review.
+% \begin{equation}
+%     \mathcal{L}_{\text{contact interactions}} \in \mathcal{L}^{(6)} ? 
+% \end{equation}
+Why $d=6$ is the most interesting set of operators.
+
+It is important to note that a  constraint that physial cross sections are semi-positive definite quantities, which can be accounted for in global SMEFT analyses. Consider, for example, the SMEFT Lagrangian
+\begin{equation}
+    \mathcal{L}=\mathcal{L}_{\mathrm{SM}}+\sum_{i=1}^{n_{\mathrm{op}}} \frac{c_{i}}{\Lambda^{2}} \mathcal{O}_{i}
+\end{equation}
+Where $\mathcal{O}_{i}$ are the dimension-6 operators and $c_i$ are the Wilson coefficients, which are assumed to be real (do they have to be?). Then any observable, such as the cross section, calculated using this Lagrangian can be written as the expansion
+\begin{equation}
+    \begin{aligned}
+\sigma &= \underbrace{c_{0}^{2} \sigma_{00}}_{\text{SM contribution}} \\
+&+\underbrace{c_{0} c_{1} \sigma_{01}+c_{1} c_{0} \sigma_{10}+c_{0} c_{2} \sigma_{02}+\ldots}_{\text{linear $\mathcal{O}\left(\Lambda^{-2}\right)$ EFT contributions}} \\
+&+\underbrace{c_{1}^{2} \sigma_{11}+c_{1} c_{2} \sigma_{12}+c_{1} c_{3} \sigma_{13}+\ldots}_{\mathcal{O} (\Lambda^{-4}) \text{contributions}} \\
+&=\boldsymbol{c}^{T} \cdot \boldsymbol{\Sigma} \cdot \boldsymbol{c}
+\end{aligned}
+\end{equation}
+
+And since the physical cross section must be either positive or null, the matrix $\boldsymbol{\Sigma}$ must be semi-positive-definite. The Sylvester criterion requires the constraints coming from the $2\times 2$ minors as $\left(\Sigma_{i i} \Sigma_{j j}-\Sigma_{i j}^{2}\right) \geq 0, \quad i, j=0, \ldots n_{\mathrm{op}}$. Using this convention for the dimension-6 SMEFT, a genereic LHC cross section will be modified as
+\begin{equation}
+    \begin{aligned}
+    \sigma_{\text{LHC}} &=\sigma_{\mathrm{SM}}+\sum_{i=1}^{n_{\mathrm{op}}} c_{i} \sigma_{i}^{\text{EFT}}+\sum_{i<j}^{n_{\mathrm{op}}} c_{i} c_{j} \sigma_{i j}^{\text{EFT}}
+    \end{aligned}
+\end{equation}
+
+
+The quality of the global fit as well as the statistical model will be discussed in detail in the next chapter, but let us suppose that we are using a $\chi^2$ function as is typically used.
+The quality of a global fit can be obtained by minimizing the log-likelihood, or the $\chi^2$ function, which compares the theoretical predictions to the experimental data by means of a covariance matrix. In this case is defined by 
+\begin{equation}
+    \chi^{2}(\boldsymbol{c}) \equiv \frac{1}{n_{\text {dat }}} \sum_{i, j=1}^{n_{\text {dat }}}\left(\sigma_{i}^{(\mathrm{th})}(\boldsymbol{c})-\sigma_{i}^{(\exp )}\right)\left(\operatorname{cov}^{-1}\right)_{i j}\left(\sigma_{j}^{(\mathrm{th})}(\boldsymbol{c})-\sigma_{j}^{(\exp )}\right)
+    \label{chi2_EFT}
+\end{equation}
+Where $\sigma_{i}^{(\exp )}$ and $\sigma_{i}^{(t h)}(\boldsymbol{c})$ are the central experimental data and corresponding theoretical prediction, which depends on the Wildon coefficiencts $\boldsymbol{c}$, for the i-th cross section. Note that equation \ref{chi2_EFT} is precisely \emph{not} what we want to do! We are including it here since this is what is currently done in all such fits. See Chapter \ref{stats_likelihood} for a more on this.
+A theoretical cross section depends on all the Wilson coefficients, and the exact dependence on each coefficient, say the EFT coefficient $c_j$ can be found by varying $c_j$ while setting the rest of the coefficients to zero, so that 
+\begin{equation}
+    \sigma_{m}^{(\mathrm{Th})}\left(c_{j}\right)=\sigma_{m}^{(\mathrm{SM})}+c_{j} \sigma_{m, j}^{(\mathrm{EFT})}+c_{j}^{2} \sigma_{m, j j}^{(\mathrm{EFT})}
+\end{equation}
+which results in a quartic polynomial form for the $\chi^2$, which can be expanded as $\chi^{2}\left(c_{j}\right)=\sum_{k=0}^{4} a_{k}\left(c_{j}\right)^{k}$ and minimized to obtain the best-fit value of the coefficient, $c_{0,j}$. See also [Combined SMEFT interpretation of Higgs, diboson,
+and top quark data from the LHC]] for more details.
+Note however, that equation \ref{ch2_EFT} assumes that the data are Gaussian distributed around the true SM values, which may or may not be a good approximation. This also assumes that the covariance matrix can be expressed as a sum of separate experimental and theoretical covariance matrices, and hence that the experimental and theoretical uncertainties are uncorrelated
+\begin{equation}
+    \operatorname{cov}_{i j}=\operatorname{cov}_{i j}^{(\exp )}+\operatorname{cov}_{i j}^{(\text {th })}
+\end{equation}
+
+Where the experimental covariance matrix is constructed from all sources of statistical and
+systematic uncertainties that are made available by the experiments. EFT theorists therefore use only the full covariance matrix, without details of its individual components. This complicates EFT fit reinterpretations, because the covariance matrices have to be modifidied to include more data, additional uncertainties, etc. Furthermore, the provided covariance matrix is not necessarily positive-definite or it is ill-defined. In this case, the dataset is either discarded for the fit or its covariance matrix is regularized by some ad-hoc procedure. All these problems (there's more) would be avoided if one publishes the full statistical model together with the data, since one can then construct the exact likelihood function without the need of any ad-hoc approximations and exploit the complete information offered by CMS data.
+
+\subsection{Search for Contact Interactions}
+
+Quark compositeness models assume that quarks are composed of more fundamental particles with new strong interactions at a composite scale $\Lambda$, much greater than the quark masses. At energy much below $\Lambda$, quark contact interactions (CI) are induced by the underlying strong dynamics, and yield observable signals at hadron colliders. It is modeled that the contact interactions are induced by an effiective $d=6$ Lagrangian, given by
+\begin{equation}
+    \mathcal{L}_{CI}=\frac{1}{2 \Lambda^{2}}\left(c_{1} O_{1}+c_{2} O_{2}\right)
+\end{equation}
+Where here it is considered that the quark contact interactions are products of left-handed electroweak isoscalar quark currents which are assumed to be flavor-symmetric to avoid large flavor-changing neutral-current interactions, (arXiv:1101.4611v2) $c_1, c_2$ are the Wilson coefficients, and $O_1, O_2$ are the relevant four-fermion operators. 
+\footnote{$O_{1}=\delta_{i j} \delta_{k l}\left(\sum_{c=1}^{3} \bar{q}_{L c i} \gamma_{\mu} q_{L c j} \sum_{d=1}^{3} \bar{q}_{L d k} \gamma^{\mu} q_{L d l}\right)$,  $O_{2}=\mathrm{T}_{i j}^{a} \mathrm{~T}_{k l}^{a}\left(\sum_{c=1}^{3} \bar{q}_{L c i} \gamma_{\mu} q_{L c j} \sum_{d=1}^{3} \bar{q}_{L d k} \gamma^{\mu} q_{L d l}\right)$ where $c,d$ are generation indices, $i, j, k, l, a$ are color indices, $T^a$ are the Gell-Mann matrices with the normalization $\operatorname{Tr}\left(\mathrm{T}^{a} \mathrm{~T}^{b}\right)=\delta^{a b} / 2$.}
+
+
+In the SM, QCD predicts that jets are preferabbly produced in large rapidity bins, via small angle scattering in t-channel processes. Furthermore, it predicts that the $p_T$ or $M_{jj}$ spectrum falls off very fast at large values. On the other hand, jet production induced by contact interactions (such as $qq \rightarrow qq$) is expected to be much more isotropic and fall off slower with increasing values of $p_T$ or $M_{jj}$. CI models also predict that the region that is most sensitive to CI are low rapidity region. This is why it was shown that the inclusive jet $p_T$ and the dijet anglular distribution, show a great sensetivity to possible quark contact interactions induced by SMEFT (new physics) models. The dijet angular variable is $\chi_{\mathrm{dijet}}=\exp \left(2 y^{*}\right)$, where $y^{*}=\frac{1}{2}\left|y_{1}-y_{2}\right|$ where $\pm y^{*}$ are the rapidities of the two jets in the parton-parton c.m. frame.
+
+
+
+The theoretical jet cross sections could be calculated using the CI scale $\Lambda$ and Wilson coefficients $c_i$, and this cross section, interestingly, could be decomposed into a cross section per each kinematic bin %(file:///D:/PROSPECTUS/RELEVANT_PAPERS/CIJET_GAO.pdf)
+\begin{equation}
+\begin{aligned}
+    \sigma_{b i n}^{theor} &=\sum_{i=1}^{6}\left(\lambda_{i}\left(b_{i}+a_{i} r\right)\right) / \Lambda^{2} +\sum_{i=1}^{6}\left(\lambda_{i}^{2}\left(b_{i i}+a_{i i} r\right)\right) / \Lambda^{4} \\
+    &+ \sum_{i=1,3,5}\left(\lambda_{i} \lambda_{i+1}\left(b_{i i+1}+a_{i i+1} r\right)\right) / \Lambda^{4}  +\sum_{i=1,2,5,6}\left(\lambda_{i} \lambda_{4}\left(b_{i 4}+a_{i 4} r\right)\right) / \Lambda^{4}
+    \label{xsec_Gao}
+\end{aligned}
+\end{equation}
+Where $c_{i}=4 \pi \lambda_{i}, r=\ln \left(\Lambda / \mu_{0}\right)$, and $\mu_0$ is an arbitrary reference scale chosen according to the kinematic range of the bin. 
+
+% Having our theoretical cross section will be the one that is calculated with, say Gao's code, which is what is input into equation \ref{chi2_EFT}
+
+Measure $\sigma^{exp}$ with a good observable in which there is only one instance per event $\rightarrow$ calculate  $\sigma^{theor}$ from $xsec_Gao$ using that observable $\rightarrow$ Fit $\sigma^{theor}$ and $\sigma^{exp}$ to set limits on Wilson coefficients $\rightarrow$ Are there CI's? (set limits on $\Lambda$).
+
+
+
+
+
+
+
+
+
+\section{Defining My Own Observable}
+With the intention of only having one observable per event to avoid cross-bin correlation, and informed by SMEFT.
+
+
